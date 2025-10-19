@@ -1,0 +1,16 @@
+/* Bagian Akhir Halaman */
+.tentang {
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+  display: flex;
+    background-color: #021721;
+}
+.tentang h3 {
+    color: #ffffff;
+}
+.tentang p {
+    
+    margin-top: 30px;
+    color: #fff;
+}

@@ -1,0 +1,106 @@
+/* Settingan dasar */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  position: sticky;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  /* tinggi minimal 1 layar penuh */
+  margin: 0;
+ 
+}
+
+main#content {
+  flex: 1;
+  /* isi dorong ke bawah biar footer tetap di bawah */
+}
+
+/* Bagian Header */
+.bgrnd {
+  background-color: #054761;
+  color: #dce1e8;
+  box-shadow: 0 2px 5px rgba(0,0,0,1);
+  
+}
+
+.bgrnd .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.head {
+  padding-top: 10px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-kknboneatiro {
+
+  width: 60px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  text-align: center;
+  margin-right: 15px;
+}
+.logo-text h1 {
+  font-size: 18px;
+  margin-bottom: 2px;
+}
+.logo-text p {
+  font-size: 12px;
+}
+.grsh {
+  border: none;
+  height: 2px;
+  background-color: #71a474;
+  width: 100%;
+  margin: 20px auto;
+}
+/* Menu Pilihan */
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: #dce1e8;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+  color: #3fe6de;
+}
+
+/* 🔹 Saat layar kecil (< 600px), ubah jadi kolom */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+}

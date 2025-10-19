@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Website Desa Boneatiro</title>
+  <link rel="stylesheet" href="css/desain.css">
+  <style>
+
+    #footer {
+      background: #004d40;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div id="head"></div>
+
+  <!-- Konten utama -->
+  <div id="content"></div>
+
+  <!-- Footer -->
+  <div id="footer"></div>
+
+  <script>
+  // Fungsi umum untuk include file HTML (header/footer)
+  function includeHTML(file, elementId) {
+    fetch(file)
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById(elementId).innerHTML = data;
+      });
+  }
+
+  // Fungsi utama untuk memuat halaman konten
+  async function loadPage(page) {
+    try {
+      const res = await fetch(page);
+      const html = await res.text();
+
+      // Masukkan konten ke halaman
+      const content = document.getElementById("content");
+      content.innerHTML = html;
+
+      // Jalankan <script> yang ada di halaman yang dimuat
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = html;
+      tempDiv.querySelectorAll("script").forEach(script => {
+        const newScript = document.createElement("script");
+        if (script.src) {
+          newScript.src = script.src;
+        } else {
+          newScript.textContent = script.textContent;
+        }
+        document.body.appendChild(newScript);
+      });
+
+      // Panggil fungsi tambahan sesuai halaman
+      if (page === "berita.html") {
+        loadNews();
+      } else if (page === "galeri.html" && typeof initGallery === "function") {
+        initGallery();
+      } else if (page === "prfl.html" && typeof initInfo === "function") {
+        initInfo();
+      }
+
+    } catch (error) {
+      console.error("Gagal memuat halaman:", error);
+      document.getElementById("content").innerHTML = "<p style='color:red;text-align:center;'>Gagal memuat halaman.</p>";
+    }
+  }
+
+  // Fungsi untuk memuat berita dari JSON
+  async function loadNews() {
+    try {
+      const res = await fetch("data/berita.json?" + new Date().getTime());
+      const newsList = await res.json();
+      const container = document.getElementById("newsContainer");
+      if (!container) return;
+
+      container.innerHTML = "<h2>Informasi dan Kegiatan Terkini</h2>";
+
+      if (!newsList.length) {
+        container.innerHTML += "<p style='text-align:center;'>Belum ada berita.</p>";
+        return;
+      }
+
+      newsList.reverse().forEach(news => {
+        const div = document.createElement("div");
+        div.classList.add("news-item");
+        div.innerHTML = `
+          <h3>${news.title}</h3>
+          <small>📅 ${news.date}</small>
+          ${news.image ? `<img src="${news.image}" alt="Gambar berita">` : ""}
+          <p>${news.description}</p>
+        `;
+        container.appendChild(div);
+      });
+    } catch (error) {
+      console.error("Gagal memuat berita:", error);
+      document.getElementById("newsContainer").innerHTML =
+        "<p style='color:red;text-align:center;'>Gagal memuat berita.</p>";
+    }
+  }
+
+  // Jalankan saat pertama kali website dibuka
+  includeHTML("head.html", "head");
+  includeHTML("foot.html", "footer");
+  loadPage("prfl.html");
+  </script>
+
+  <!-- Script global -->
+  <script src="fungsipj.js"></script>
+  <script src="berita.js"></script>
+
+</body>
+</html>

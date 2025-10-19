@@ -1,0 +1,47 @@
+body {
+      margin: 0;
+      background-color: #f5f7fa;
+    }
+
+    section.tentang {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap; /* agar responsif */
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #30aba5, #0f4a6f);
+      color: white;
+    }
+
+    .tentang img {
+      width: 320px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      margin: 20px;
+    }
+
+    .tentang .isi {
+      max-width: 500px;
+      margin: 20px;
+    }
+
+    .tentang h2 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    .tentang p {
+      line-height: 1.6;
+      font-size: 1em;
+    }
+
+    /* 🔹 Responsif: atur ulang layout di layar kecil */
+    @media (max-width: 700px) {
+      .tentang {
+        flex-direction: column;
+        text-align: center;
+      }
+      .tentang img {
+        width: 80%;
+      }
+    }

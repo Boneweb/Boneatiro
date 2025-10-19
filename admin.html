@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Kelola Berita Desa Boneatiro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f3;
+      padding: 30px;
+    }
+    h2 {
+      color: #004d40;
+      text-align: center;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    input, textarea, button {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      font-size: 14px;
+    }
+    button {
+      background: #004d40;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #00695c;
+    }
+    .msg {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .post-list {
+      max-width: 800px;
+      margin: 40px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .post-item {
+      border-bottom: 1px solid #ddd;
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .post-item:last-child { border-bottom: none; }
+    .post-info {
+      max-width: 80%;
+    }
+    .post-info h3 { margin: 0; color: #333; }
+    .post-info small { color: gray; }
+    .delete-btn {
+      background: #c62828;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .delete-btn:hover { background: #b71c1c; }
+  </style>
+</head>
+<body>
+
+  <h2>📝 Form Posting Berita Desa</h2>
+
+  <form id="postForm" enctype="multipart/form-data">
+    <input type="text" name="title" placeholder="Judul berita" required>
+    <textarea name="description" rows="5" placeholder="Isi / deskripsi berita" required></textarea>
+    <input type="file" name="image" accept="image/*">
+    <button type="submit">Posting Berita</button>
+  </form>
+
+  <div class="msg" id="message"></div>
+
+  <div class="post-list">
+    <h3>Daftar Berita</h3>
+    <div id="postList"><p>Memuat data...</p></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('postForm');
+    const msg = document.getElementById('message');
+    const postList = document.getElementById('postList');
+
+    // 🟢 Kirim berita baru
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      msg.innerHTML = "⏳ Mengirim data...";
+      try {
+        const res = await fetch("save_post.php", {
+          method: "POST",
+          body: formData
+        });
+        const result = await res.text();
+        msg.innerHTML = "✅ " + result;
+        form.reset();
+        loadPosts(); // refresh daftar berita
+      } catch (error) {
+        msg.innerHTML = "❌ Gagal mengirim berita.";
+        console.error(error);
+      }
+    });
+
+    // 🟡 Load semua berita
+    async function loadPosts() {
+      try {
+        const res = await fetch("data/berita.json?" + new Date().getTime());
+        const posts = await res.json();
+        postList.innerHTML = "";
+
+        if (!posts.length) {
+          postList.innerHTML = "<p>Belum ada berita.</p>";
+          return;
+        }
+
+        posts.forEach(post => {
+          const div = document.createElement("div");
+          div.classList.add("post-item");
+          div.innerHTML = `
+            <div class="post-info">
+              <h3>${post.title}</h3>
+              <small>${new Date(post.date).toLocaleString("id-ID")}</small>
+            </div>
+            <button class="delete-btn" onclick="deletePost(${post.id})">🗑 Hapus</button>
+          `;
+          postList.appendChild(div);
+        });
+      } catch (err) {
+        postList.innerHTML = "<p style='color:red;'>Gagal memuat data.</p>";
+        console.error(err);
+      }
+    }
+
+    // 🔴 Hapus berita
+    async function deletePost(id) {
+      if (!confirm("Yakin ingin menghapus berita ini?")) return;
+      try {
+        const res = await fetch("delete_post.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: "id=" + id
+        });
+        const result = await res.text();
+        alert(result);
+        loadPosts();
+      } catch (err) {
+        alert("❌ Gagal menghapus berita.");
+        console.error(err);
+      }
+    }
+
+    loadPosts();
+  </script>
+
+</body>
+</html>

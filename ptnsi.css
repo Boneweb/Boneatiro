@@ -1,0 +1,47 @@
+.bjudes {
+    font-size: 30px;
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+  color: #0a6a8f;
+}
+.bdesk {
+    color: rgba(0, 0, 0, 0.548);
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    font-style: italic;
+}
+.potensi1 {
+    margin-top: 20px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0.6px 4px rgba(0, 0, 0, 0.345);
+    padding: 40px;
+}
+.b1 {
+    font-size: 16px;
+    margin-top: 50px;
+}
+.bjudul {
+    font-size: 23px;
+}
+.ptns {
+    margin-top: 10px;
+}
+.kaho {
+    width: 20%;
+}
+.pemandangan {
+    width: 40%;
+}
+.desk {
+    font-size: 14.4px;
+    margin-top: 7px;
+}
+.iyt {
+    width: 3%;
+    margin-top: 2px;
+}
+.jyt {
+    margin-bottom: 5px;
+}

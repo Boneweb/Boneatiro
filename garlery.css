@@ -1,0 +1,47 @@
+h3 {
+    color: #0a6a8f;
+    text-align: center;
+    font-size: 23px;
+    text-shadow: 1px 1px 1px black;
+}
+b {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  font-size: 20px;
+}
+.as {
+    font-size: 14px;
+    justify-content: center;
+    display: flex;
+    color: rgb(0, 0, 0);
+    margin-top: 15px;
+}
+.kumpulan {
+  display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 50px;
+    margin-top: 90px;
+}
+.gmb {
+  box-shadow: 0 0.8px 4px rgba(0, 0, 0, 0.34);
+  padding: 14px;
+  margin-top: -60px;
+}
+.foto {
+    margin: 0 auto;
+    flex: none;
+    display: flex;
+  justify-content: center;
+}
+.gambarnya {
+  width: 40%;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: 0.2s;
+    padding: 10px;
+}
+.preview:hover {
+  transform: scale(1.01);
+}
