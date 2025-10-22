@@ -249,7 +249,7 @@ h4 {
 /* 🔹 Setiap kotak video */
 .videoyt {
   background: #000;
-  width: 400px;
+  width: 300px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
@@ -272,7 +272,7 @@ h7 {
 
 /* 🔹 Iframe video YouTube */
 iframe {
-  width: 100%;
+  width: 120%;
   height: 250px;
   border: none;
 }
