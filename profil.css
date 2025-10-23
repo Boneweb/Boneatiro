@@ -135,7 +135,7 @@ li {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 100px;
+  gap: 20px;
   margin-top: 20px;
 }
 .jp {
@@ -273,15 +273,4 @@ iframe {
   height: 200px;
   border: none;
   border-radius: 10px;
-}
-
-/* 🔹 Tampilan HP (max 768px) */
-@media (max-width: 800px) {
-  .videoyt {
-    width: 100%;
-  }
-
-  iframe {
-    height: 180px;
-  }
 }
