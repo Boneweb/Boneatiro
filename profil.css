@@ -1,3 +1,4 @@
+
 /*Bagian Gambar Atas*/
 .gamut {
   margin-top: -20px;
@@ -155,7 +156,7 @@ h5 {
 /*Pengertian Desa*/
 
 .peng {
-  padding: 20px;
+  padding: 40px;
     background-color: #dce1e845;
   box-shadow: 0 2px 6px #00000061;
   margin-top: 15px;
@@ -172,10 +173,13 @@ h5 {
   line-height: 1.6;
 }
 .peng img {
-  width: 100%px;
-  height: 280px;
+
+  width: 400px;
   border-radius: 15px;
   box-shadow: 0 2px 5px #0000001a;
+}
+.bgn {
+  width: 100%;
 }
 .pengertian-desa {
   font-size: 14px;
@@ -240,15 +244,6 @@ h4 {
 
 /* 🔹 Container utama video */
 .video {
-    margin-right: 300px;
-  margin-top: 20px;
-  display: flex;
-  flex-wrap: wrap; /* agar responsif */
-  gap: 20px;
-}
-
-/* 🔹 Setiap kotak video */
-.video {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -257,7 +252,7 @@ h4 {
 }
 
 .videoyt {
-  width: 30%;
+
   text-align: center;
 }
 
