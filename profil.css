@@ -275,15 +275,28 @@ h7 {
 
 /* 🔹 Iframe video YouTube */
 iframe {
-  max-width: 100%;
-  height: auto;
+  width: 100%;        /* selalu ikut container */
+  max-width: 800px;   /* batasi agar tidak terlalu lebar di laptop */
+  height: 450px;      /* proporsi video (16:9) */
   display: block;
+  margin: 0 auto;     /* agar tetap di tengah */
   border: none;
 }
 
-/* 🔹 Responsif untuk HP */
-@media (max-width: 768px) {
+/* 🔹 Tampilan Laptop / PC (di atas 1024px) */
+@media (min-width: 1024px) {
   .video-card {
-    width: 90%;
+    width: 70%;        /* tampil lebih elegan di layar besar */
+    margin: 0 auto;
+  }
+}
+
+/* 🔹 Tampilan Tablet / HP */
+@media (max-width: 768px) {
+  iframe {
+    height: 200px;     /* turunkan tinggi video agar tidak makan layar penuh */
+  }
+  .video-card {
+    width: 95%;
   }
 }
