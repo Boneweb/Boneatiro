@@ -276,9 +276,9 @@ iframe {
 }
 
 /* 🔹 Tampilan HP (max 768px) */
-@media (max-width: 768px) {
+@media (max-width: 800px) {
   .videoyt {
-    width: 90%;
+    width: 100%;
   }
 
   iframe {
