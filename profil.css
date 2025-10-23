@@ -278,7 +278,6 @@ iframe {
   width: 100%;        /* selalu ikut container */
   max-width: 800px;   /* batasi agar tidak terlalu lebar di laptop */
   height: 450px;      /* proporsi video (16:9) */
-  display: block;
   margin: 0 auto;     /* agar tetap di tengah */
   border: none;
 }
