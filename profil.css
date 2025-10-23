@@ -283,13 +283,7 @@ iframe {
   border: none;
 }
 
-/* 🔹 Tampilan Laptop / PC (di atas 1024px) */
-@media (min-width: 1024px) {
-  .video-card {
-    width: 70%;        /* tampil lebih elegan di layar besar */
-    margin: 0 auto;
-  }
-}
+
 
 /* 🔹 Tampilan Tablet / HP */
 @media (max-width: 768px) {
