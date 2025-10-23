@@ -153,9 +153,7 @@ h5 {
 }
 
 /*Pengertian Desa*/
-.debon {
-  margin-top: -380px;
-}
+
 .peng {
   padding: 20px;
     background-color: #dce1e845;
@@ -174,7 +172,7 @@ h5 {
   line-height: 1.6;
 }
 .peng img {
-  width: 500px;
+  width: 100%px;
   height: 280px;
   border-radius: 15px;
   box-shadow: 0 2px 5px #0000001a;
@@ -250,46 +248,40 @@ h4 {
 }
 
 /* 🔹 Setiap kotak video */
+.video {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
 .videoyt {
-  background: #000;
-  width: 300px;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
-}
-
-.videoyt:hover {
-  transform: scale(1.02);
-}
-
-/* 🔹 Judul video */
-h7 {
-  color: white;
-  font-size: 16px;
-  background: #000;
-  margin: 0;
-  padding: 10px;
+  width: 30%;
   text-align: center;
 }
 
-/* 🔹 Iframe video YouTube */
-iframe {
-  width: 100%;        /* selalu ikut container */
-  max-width: 800px;   /* batasi agar tidak terlalu lebar di laptop */
-  height: 450px;      /* proporsi video (16:9) */
-  margin: 0 auto;     /* agar tetap di tengah */
-  border: none;
+.videoyt h7 {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: bold;
 }
 
+iframe {
+  width: 100%;
+  height: 200px;
+  border: none;
+  border-radius: 10px;
+}
 
-
-/* 🔹 Tampilan Tablet / HP */
+/* 🔹 Tampilan HP (max 768px) */
 @media (max-width: 768px) {
-  iframe {
-    height: 200px;     /* turunkan tinggi video agar tidak makan layar penuh */
+  .videoyt {
+    width: 90%;
   }
-  .video-card {
-    width: 95%;
+
+  iframe {
+    height: 180px;
   }
 }
