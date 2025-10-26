@@ -156,14 +156,14 @@ h5 {
 /*Pengertian Desa*/
 
 .peng {
-  padding: 40px;
+  padding: 20px;
     background-color: #dce1e845;
   box-shadow: 0 2px 6px #00000061;
   margin-top: 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 .pengdes {
   gap: 40px;
